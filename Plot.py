@@ -121,7 +121,7 @@ def Test2_1():
     closest_points = train.iloc[closest_indices]
     print(np.column_stack((closest_points['Glucose'], closest_points['BMI'], closest_points['BloodPressure'])))
 
-    knr = KNeighborsRegressor(n_neighbors=50)
+    knr = KNeighborsRegressor(n_neighbors=5)
     knr.fit(np.column_stack((train['Glucose'], train['BMI'])), train['BloodPressure'])
     prd = knr.predict(np.column_stack((test['Glucose'], test['BMI'])))
     print(mean_absolute_error(prd, test['BloodPressure']))
