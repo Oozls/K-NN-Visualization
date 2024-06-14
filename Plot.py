@@ -13,6 +13,9 @@ plt.rcParams['axes.unicode_minus'] = False
 
 def Test1():
     global blue, red, target
+
+    fig, ax = plt.subplots()
+
     if os.path.exists('./arrays/blue.npy') and os.path.exists('./arrays/red.npy') and os.path.exists('./arrays/target.npy'):
         blue = np.load('./arrays/blue.npy')
         red = np.load('./arrays/red.npy')
@@ -44,6 +47,10 @@ def Test1():
             plt.annotate(f'{str(ar[i][0])}, {str(ar[i][1])}', (ar[i][0] + 0.2, ar[i][1] + 0.2))
     
     plt.savefig('./photos/1-3.png')
+
+    circle1 = plt.Circle((21, 18), 7, color='orange', alpha=0.5)
+    ax.add_patch(circle1)
+    fig.savefig('./photos/1-4.png')
 
 def Test2():
     csv = pd.read_csv('./datas/gender.csv')
@@ -230,4 +237,4 @@ def Test5():
     print(np.column_stack((closest_points['Glucose'], closest_points['BMI'], closest_points['Insulin'], closest_points['Outcome'])))
 
 if __name__ == '__main__':
-    Test2_1()
+    Test1() # Change on your own
